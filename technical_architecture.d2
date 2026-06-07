@@ -1,0 +1,38 @@
+direction: right
+
+CloudEnvironment: {
+  shape: cloud
+  label: "Entorno Cloud (Google Cloud / AWS)"
+}
+
+MobileApp: {
+  shape: rectangle
+  label: "App Móvil (React Native / Flutter)"
+}
+
+Backend: {
+  shape: cylinder
+  label: "Backend Python (FastAPI / Django)"
+}
+
+Database: {
+  shape: cylinder
+  label: "PostgreSQL DB"
+}
+
+AISmartCurator: {
+  shape: hexagon
+  label: "Microservicio IA Smart Curator"
+}
+
+CloudEnvironment.MobileApp -> Backend: "API REST / GraphQL"
+Backend -> Database: "CRUD Operations"
+Backend -> AISmartCurator: "Recomendaciones de Stock"
+AISmartCurator -> Database: "Datos de Tendencias / Comportamiento"
+
+subgraph "Global Connect MVP" {
+  MobileApp
+  Backend
+  Database
+  AISmartCurator
+}
